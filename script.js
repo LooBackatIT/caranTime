@@ -1,14 +1,19 @@
-fetchdat()
+fetchdata()
+
+const city = document.getElementById("city")
+city.onchange = () => {
+    localStorage.setItem("city", `${city.value}`)
+}
 
 async function fetchdata() {
     
     try {
-        const city = document.getElementById("city")
-        const recponse = await fetch(`https://islomapi.uz/api/present/day?region=${city.value}`);
+        const recponse = await fetch(`https://islomapi.uz/api/present/day?region=${localStorage.getItem("city")}`);
 
         if(!recponse.ok){
             throw new Error("Not fount")
         }
+
         const data = await recponse.json();
         console.log(data);
 
