@@ -16,8 +16,12 @@ async function fetchdata() {
 
         const data = await recponse.json();
         console.log(data);
+//city
+         const apicityName = data.region
+         const cityName = document.getElementById("cityName")
+         cityName.innerHTML = apicityName
 
-
+//Time
         const bomdotTime = data.times.tong_saharlik
         const tong_saharlik = document.getElementById("tong_saharlik")
         tong_saharlik.innerHTML = ("Bomdod: " + bomdotTime)
