@@ -5,6 +5,8 @@ city.onchange = () => {
     localStorage.setItem("city", `${city.value}`)
 }
 
+
+
 async function fetchdata() {
     
     try {
@@ -15,12 +17,12 @@ async function fetchdata() {
         }
 
         const data = await recponse.json();
-        console.log(data);
 //city
          const apicityName = data.region
          const cityName = document.getElementById("cityName")
          cityName.innerHTML = apicityName
 
+        compare(data.times);
 //Time
         const bomdotTime = data.times.tong_saharlik
         const tong_saharlik = document.getElementById("tong_saharlik")
@@ -46,4 +48,11 @@ async function fetchdata() {
     catch (error) {
         console.error(error);
     }
+}
+
+function compare(x) {
+   for (var prop in x) {
+      console.log(prop)
+   }
+   console.log(x)
 }
